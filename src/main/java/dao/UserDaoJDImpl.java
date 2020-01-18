@@ -166,7 +166,7 @@ public class UserDaoJDImpl implements IUserDao {
     public void createTable() throws SQLException {
         connection.setAutoCommit(false);
         try (Statement stmt = connection.createStatement()) {
-            stmt.execute("create table if not exists clients (id int auto_increment, name varchar(45), password varchar(45), login varchar(45), primary key (id))");
+            stmt.execute("create table if not exists clients (id int auto_increment, name varchar(45), password varchar(45), login varchar(45), role varchar(45), primary key (id))");
             connection.commit();
         } catch (Exception e) {
             connection.rollback();
