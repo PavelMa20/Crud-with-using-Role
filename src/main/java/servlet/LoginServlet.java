@@ -34,6 +34,5 @@ public class LoginServlet extends BaseServlet {
         request.getSession().setAttribute("user", user);
         response.sendRedirect("filter");
 
-
     }
 }
