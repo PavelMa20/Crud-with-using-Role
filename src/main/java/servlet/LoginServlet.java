@@ -19,6 +19,8 @@ public class LoginServlet extends BaseServlet {
         String password = request.getParameter("password");
         if (login == null || login.isEmpty() || password == null || password.isEmpty()) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
+            request.setAttribute("login", null);
+            request.setAttribute("password", null);
             dispatcher.forward(request, response);
             return;
         }

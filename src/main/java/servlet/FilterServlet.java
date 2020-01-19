@@ -18,11 +18,19 @@ public class FilterServlet extends BaseServlet {
         User user = (User) request.getSession().getAttribute("user");
         if (user != null && user.getRole().equals("admin")) {
             response.sendRedirect("admin/list");
-        } else if (user != null && user.getRole().equals("user")) {
+            return;
+        }
+        if (user != null && user.getRole().equals("user")) {
             request.setAttribute("user", user);
             response.sendRedirect("user");
-        } else {
-            response.sendError(401, "incorrect role");
+            return;
         }
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
+        request.setAttribute("login", null);
+        request.setAttribute("password", null);
+        request.setAttribute("message", "incorrect role");
+        dispatcher.forward(request, response);
+
     }
 }
