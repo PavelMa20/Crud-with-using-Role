@@ -10,7 +10,6 @@ import org.hibernate.query.Query;
 import util.DBHelper;
 import util.HBHelper;
 
-import java.sql.SQLException;
 import java.util.List;
 
 
@@ -41,7 +40,6 @@ public class UserDaoHBImpl implements IUserDao {
             return users.listIterator().next();
         }
     }
-
 
 
     @Override
@@ -81,7 +79,7 @@ public class UserDaoHBImpl implements IUserDao {
     public void updateUser(User user) throws DBException {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
-             transaction = session.beginTransaction();
+            transaction = session.beginTransaction();
             session.update(user);
             transaction.commit();
         } catch (Exception e) {
@@ -94,7 +92,7 @@ public class UserDaoHBImpl implements IUserDao {
     public void deleteUser(User user) throws DBException {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
-             transaction = session.beginTransaction();
+            transaction = session.beginTransaction();
             session.delete(user);
             transaction.commit();
         } catch (Exception e) {
@@ -113,7 +111,6 @@ public class UserDaoHBImpl implements IUserDao {
             throw new DBException(e.getMessage());
         }
     }
-
 
 
     @Override

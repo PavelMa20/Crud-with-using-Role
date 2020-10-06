@@ -161,8 +161,6 @@ public class UserDaoJDImpl implements IUserDao {
         return userList;
     }
 
-
-
     public void createTable() throws SQLException {
         connection.setAutoCommit(false);
         try (Statement stmt = connection.createStatement()) {
